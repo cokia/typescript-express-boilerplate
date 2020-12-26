@@ -1,0 +1,27 @@
+{
+  "name": "typescript-express-boilerplate",
+  "version": "1.0.0",
+  "description": "safe express boilerplate with typescript & mysql based on bulletproof-nodejs",
+  "main": "src/app.ts",
+  "repository": "https://github.com/cokia/typescript-express-boilerplate",
+  "author": "cokia <hanu@hanukoon.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.14.16",
+    "@typescript-eslint/eslint-plugin": "^4.11.0",
+    "@typescript-eslint/parser": "^4.11.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lodash": "^4.17.20"
+  }
+}
