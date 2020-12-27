@@ -1,21 +1,49 @@
-import config from './config';
 import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 
-async function startServer() {
-  const app = express();
-  await require('./loaders').default({ expressApp: app });
-  // node without babel only support to use import/export at top level
-app.listen(config.port, () => {
-  console.log(`    
-      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-          Server listening on port: ${config.port}
-      @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        `);
-  }).on('error', error => {
-    console.error(error);
-    process.exit(1);
-  });
+// import { errorHandler } from './middlewares';
+// import routes from './routes';
+import config from './config';
 
+class App {
+  public app: express.Application;
+
+  constructor() {
+    this.app = express();
+    this.initializeMiddlewares();
+    // this.connectMongoDB();
+    this.initializeRouter();
+    this.initializeErrorhandlers();
+  }
+
+  private initializeRouter() {
+    const router: express.Router = express.Router();
+    // routes.forEach((route) => {
+    //   this.app.use(route.basePath, route.router);
+    // });
+    // this.app.use(router);
+  }
+
+  private initializeMiddlewares() {
+    this.app.use(cors());
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: true }));
+  }
+
+  private initializeErrorhandlers() {
+    // this.app.use(errorHandler);
+  }
+
+  // private connectMongoDB() {
+  //   const { mongoUri } = config;
+  //   const mongooseOption = {
+  //     useNewUrlParser: true,
+  //     useUnifiedTopology: true,
+  //     useCreateIndex: true,
+  //   };
+  //   mongoose.connect(mongoUri, mongooseOption);
+  // }
 }
 
-startServer();
+export default App;
