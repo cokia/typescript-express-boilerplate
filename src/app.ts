@@ -11,13 +11,13 @@ class App {
 
   constructor() {
     this.app = express();
-    this.initializeMiddlewares();
-    // this.connectMongoDB();
-    this.initializeRouter();
-    this.initializeErrorhandlers();
+    this.initMiddlewares();
+    // this.initMysqlConnection();
+    this.initRouter();
+    this.initErrorHandler();
   }
 
-  private initializeRouter() {
+  private initRouter() {
     const router: express.Router = express.Router();
     // routes.forEach((route) => {
     //   this.app.use(route.basePath, route.router);
@@ -25,17 +25,17 @@ class App {
     // this.app.use(router);
   }
 
-  private initializeMiddlewares() {
+  private initMiddlewares() {
     this.app.use(cors());
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
   }
 
-  private initializeErrorhandlers() {
+  private initErrorHandler() {
     // this.app.use(errorHandler);
   }
 
-  // private connectMongoDB() {
+  // private initMysqlConnection() {
   //   const { mongoUri } = config;
   //   const mongooseOption = {
   //     useNewUrlParser: true,
